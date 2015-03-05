@@ -1,0 +1,38 @@
+pgpmime-decrypt is a Python 3 script for decrypting PGP/MIME messages on
+the command line. It requires a working GnuPG 2 installation and, of course,
+the correct secret key.
+
+WARNING: THIS SCRIPT HAS NOT BEEN TESTED THOROUGHLY AND IS
+NOT RECOMMENDED FOR PRODUCTION USE. ALWAYS KEEP BACKUPS OF YOUR MESSAGES!
+
+Dependencies:
+
+- GnuPG 2 <https://www.gnupg.org/>
+- Python 3.4 <https://www.python.org/>
+- PyGPGME 0.3 <https://launchpad.net/products/pygpgme>
+
+On Debian (Jessie), you can install all dependencies with this command:
+
+$ apt-get install python3-gpgme
+
+Usage as a filter:
+
+$ pgpmime-decrypt < input > output
+
+Usage for operating on a message file in place:
+
+$ pgpmime-decrypt -f filename
+
+To keep the original message as a message/rfc822 attachment, you can add
+the --keep option. This is strongly recommended, though some mail clients
+may not be able to display these attachments correctly, and the message
+contents will probably be displayed twice (once for the decrypted part,
+and once again for the attachment).
+
+To use this script as an action in Claws Mail, so you can permanently
+decrypt messages from the GUI, choose Configuration - Actions and enter
+the following shell command:
+
+/path/to/pgpmime-decrypt -f "%f"
+
+Send feedback to: René Puls <rpuls@kcore.de> (PGP key: D8C3477F8B64D678)
