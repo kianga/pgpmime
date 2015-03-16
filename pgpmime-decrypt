@@ -88,10 +88,10 @@ def main():
     args = parser.parse_args()
 
     if args.file:
-        with open(args.file, "r") as fh:
-            msg = email.message_from_file(fh)
+        with open(args.file, "rb") as fh:
+            msg = email.message_from_binary_file(fh)
     else:
-        msg = email.message_from_file(sys.stdin)
+        msg = email.message_from_binary_file(sys.stdin.buffer)
 
     gpg_ctx = gpgme.Context()
 
