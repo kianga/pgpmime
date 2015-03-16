@@ -23,6 +23,10 @@ Usage for operating on a message file in place:
 
 $ pgpmime-decrypt -f filename
 
+Note that pgpmime-decrypt only processes a single message at time; it does
+not handle mbox files. If you feed it an mbox, it might even read the first
+message from it and discard the rest (I have not tested this), so be careful.
+
 To keep the original message as a message/rfc822 attachment, you can add
 the --keep option. This is strongly recommended, though some mail clients
 may not be able to display these attachments correctly, and the message
@@ -35,4 +39,5 @@ the following shell command:
 
 /path/to/pgpmime-decrypt -f "%f"
 
+GitHub: https://github.com/kianga/pgpmime
 Send feedback to: René Puls <rpuls@kcore.de> (PGP key: D8C3477F8B64D678)
